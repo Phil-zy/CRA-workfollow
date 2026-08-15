@@ -1,0 +1,477 @@
+{
+  "schema_version": "1.0",
+  "config_id": "xx-hospital-ethics-review-application",
+  "version": 1,
+  "status": "disabled",
+  "form_type": "ethics-review-application",
+  "created_at": "2026-08-10T12:43:13.678365+00:00",
+  "template": {
+    "file_name": "XX医院 伦理审查申请表.docx",
+    "sha256": "b3d0adeb72edee55e91e1cab7d3be9d9629768b2d058f4b26816c482de963880",
+    "structure_fingerprint": "7c6854878ccdad7eb6ae22d0a813300f4b511ed1206af89c05fc8a225bafc10f",
+    "format": "docx"
+  },
+  "fields": [
+    {
+      "id": "application_date",
+      "label": "申请日期",
+      "fact_key": "申请日期",
+      "target": {
+        "table": 0,
+        "row": 0,
+        "column": 1,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B2"
+      }
+    },
+    {
+      "id": "acceptance_number",
+      "label": "项目受理号",
+      "fact_key": "项目受理号",
+      "target": {
+        "table": 0,
+        "row": 0,
+        "column": 5,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B3"
+      }
+    },
+    {
+      "id": "protocol_number",
+      "label": "方案号",
+      "fact_key": "方案编号",
+      "target": {
+        "table": 0,
+        "row": 1,
+        "column": 1,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B4"
+      }
+    },
+    {
+      "id": "protocol_version",
+      "label": "方案版本号",
+      "fact_key": "方案版本号",
+      "target": {
+        "table": 0,
+        "row": 1,
+        "column": 5,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B5"
+      }
+    },
+    {
+      "id": "protocol_title",
+      "label": "方案名称",
+      "fact_key": "方案名称",
+      "target": {
+        "table": 0,
+        "row": 2,
+        "column": 1,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B6"
+      }
+    },
+    {
+      "id": "principal_investigator",
+      "label": "主要研究者",
+      "fact_key": "主要研究者",
+      "target": {
+        "table": 0,
+        "row": 3,
+        "column": 1,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B7"
+      }
+    },
+    {
+      "id": "department",
+      "label": "研究科室",
+      "fact_key": "研究科室",
+      "target": {
+        "table": 0,
+        "row": 4,
+        "column": 1,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B8"
+      }
+    },
+    {
+      "id": "external_investigators",
+      "label": "外单位协作研究者",
+      "fact_key": "外单位协作研究者",
+      "target": {
+        "table": 0,
+        "row": 5,
+        "column": 1,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B9"
+      }
+    },
+    {
+      "id": "sponsor",
+      "label": "申办者",
+      "fact_key": "申办者",
+      "target": {
+        "table": 0,
+        "row": 6,
+        "column": 1,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B10"
+      }
+    },
+    {
+      "id": "service_provider",
+      "label": "第三方服务公司",
+      "fact_key": "第三方服务公司",
+      "target": {
+        "table": 0,
+        "row": 7,
+        "column": 1,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B11"
+      }
+    },
+    {
+      "id": "enrollment",
+      "label": "本中心计划入组人数／研究参与者总人数",
+      "fact_key": "本中心计划入组人数／受试者总人数",
+      "target": {
+        "table": 0,
+        "row": 8,
+        "column": 3,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B12"
+      }
+    },
+    {
+      "id": "site_count",
+      "label": "研究中心数目",
+      "fact_key": "研究中心数目",
+      "target": {
+        "table": 0,
+        "row": 9,
+        "column": 2,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B13"
+      }
+    },
+    {
+      "id": "study_period",
+      "label": "研究起止期限（年/月）",
+      "fact_key": "研究起止期限（年/月）",
+      "target": {
+        "table": 0,
+        "row": 10,
+        "column": 2,
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B14"
+      }
+    },
+    {
+      "id": "funding_source",
+      "label": "经费来源",
+      "fact_key": "经费来源",
+      "target": {
+        "table": 0,
+        "row": 11,
+        "column": 2,
+        "expected_original": "口 政府立项  口 学会/协会  口 医药公司  口 其他："
+      },
+      "mapping": {
+        "type": "choice",
+        "unchecked": "口",
+        "checked": "☒",
+        "value_to_option": {
+          "政府立项": "政府立项",
+          "学会/协会": "学会/协会",
+          "医药公司": "医药公司"
+        }
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B15"
+      }
+    },
+    {
+      "id": "prior_ethics_rejection",
+      "label": "其他伦理委员会拒绝或否决",
+      "fact_key": "是否曾递交其他伦理委员会并被拒绝或否决",
+      "target": {
+        "table": 0,
+        "row": 12,
+        "column": 2,
+        "expected_original": "口是    口否    若是，请写明被拒绝或否决的原因"
+      },
+      "mapping": {
+        "type": "choice",
+        "unchecked": "口",
+        "checked": "☒",
+        "value_to_option": {
+          "是": "是",
+          "否": "否"
+        }
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B16"
+      }
+    },
+    {
+      "id": "human_genetics_outbound",
+      "label": "生物样本或人遗数据出本单位",
+      "fact_key": "是否有生物样本或涉及人类遗传资源数据出本单位",
+      "target": {
+        "table": 0,
+        "row": 13,
+        "column": 0,
+        "expected_original": "是否有生物样本或涉及人类遗传资源数据出本单位：\n口否 口是：外单位名称 ___________________口国内单位 口外资单位（符合我国人遗管理规定）"
+      },
+      "mapping": {
+        "type": "choice",
+        "unchecked": "口",
+        "checked": "☒",
+        "value_to_option": {
+          "是": "是",
+          "否": "否"
+        }
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B17"
+      }
+    },
+    {
+      "id": "special_population_collection",
+      "label": "特定人群样本和信息采集",
+      "fact_key": "是否涉及家系或特定地区人群的生物样本和信息采集",
+      "target": {
+        "table": 0,
+        "row": 14,
+        "column": 0,
+        "expected_original": "是否涉及重要遗传家系或特定地区人群的生物样本和信息采集：口否 口是：请说明"
+      },
+      "mapping": {
+        "type": "choice",
+        "unchecked": "口",
+        "checked": "☒",
+        "value_to_option": {
+          "是": "是",
+          "否": "否"
+        }
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B18"
+      }
+    },
+    {
+      "id": "study_type",
+      "label": "研究类型",
+      "fact_key": "研究类型",
+      "target": {
+        "table": 0,
+        "row": 15,
+        "column": 0,
+        "expected_original": "研究类型：(在适当项目内打勾) \n口 药物注册临床试验          口 医疗器械注册临床试验      口 生物样本/数据库      \n口 研究者发起项目（口政府拨款纵向课题  口协会等其他渠道拨款横向课题  口自筹经费）      "
+      },
+      "mapping": {
+        "type": "choice",
+        "unchecked": "口",
+        "checked": "☒",
+        "value_to_option": {
+          "药物注册临床试验": "药物注册临床试验",
+          "医疗器械注册临床试验": "医疗器械注册临床试验",
+          "生物样本/数据库": "生物样本/数据库"
+        }
+      },
+      "mapping_review": "approved",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B19"
+      }
+    },
+    {
+      "id": "publication_method",
+      "label": "临床研究结果报告和发表的方式",
+      "fact_key": "临床研究结果报告和发表的方式",
+      "target": {
+        "table": 0,
+        "row": 16,
+        "column": 0,
+        "expected_original": "临床研究结果报告和发表的方式："
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "inline_after_anchor",
+        "anchor": "临床研究结果报告和发表的方式："
+      },
+      "mapping_review": "approved",
+      "source_hint": null
+    },
+    {
+      "id": "pi_signature",
+      "label": "主要研究者签名及日期",
+      "fact_key": null,
+      "target": {
+        "table": 0,
+        "row": 17,
+        "column": 0,
+        "expected_original": "我保证以上信息和送审文件真实，承诺规范诚信实施临床研究，保护研究参与者权益和安全，严格遵循我国相关法规/指南和医院相关要求；\n我承诺不存在与我工作职责相冲突的任何个人经济利益或非经济利益以及任何直接或间接的义务和责任；\n我承诺若涉及实施《中华人民共和国人类遗传资源管理条例》及《实施细则》规定报批或报备范围内的科研活动，将在项目启动前及时向我国人类遗传资源管理相关部门报批或报备，获得批准或报备完成后方可启动研究。\n我承诺若申请项目有合作单位（含第三方服务公司）将如实报告，并与之签署合作协议。\n以上如有失实，愿意承担相关责任。\n主要研究者签名_______________      日期_____________________"
+      },
+      "mapping": {
+        "type": "manual"
+      },
+      "mapping_review": "approved",
+      "source_hint": null
+    },
+    {
+      "id": "department_head_signature",
+      "label": "科室主任签名及日期",
+      "fact_key": null,
+      "target": {
+        "table": 0,
+        "row": 18,
+        "column": 0,
+        "expected_original": "科室主任签名_________________      日期_____________________"
+      },
+      "mapping": {
+        "type": "manual"
+      },
+      "mapping_review": "approved",
+      "source_hint": null
+    },
+    {
+      "id": "ethics_committee_area",
+      "label": "伦理委员会填写区域",
+      "fact_key": null,
+      "target": {
+        "table": 0,
+        "row": 19,
+        "column": 0,
+        "expected_original": "以下医院伦理审查委员会填写：\n秘书签名__________________    日期______________________ \n审查方式： 口 常规会议审查   口 简易程序审查   口 紧急会议审查\n委员秘书签名________________    日期_________________"
+      },
+      "mapping": {
+        "type": "manual"
+      },
+      "mapping_review": "approved",
+      "source_hint": null
+    }
+  ],
+  "approval": {
+    "approved_by": "User",
+    "approved_at": "2026-08-10T12:51:08.081716+00:00",
+    "approval_id": "chat-mapping-approval-20260810-205107"
+  },
+  "enabled_at": "2026-08-10T12:51:08.081716+00:00",
+  "disabled_at": "2026-08-13T00:00:00+08:00",
+  "disabled_reason": "结构指纹算法修正后的技术配置 7befcd56afd0 已成为当前启用版本；保留此历史版本用于审计。"
+}

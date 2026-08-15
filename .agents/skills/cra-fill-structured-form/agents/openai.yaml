@@ -1,0 +1,7 @@
+interface:
+  display_name: "CRA 通用结构化表单填写"
+  short_description: "从已确认项目事实安全填写 Word 或 Excel 表单并生成核对清单"
+  default_prompt: "使用 $cra-fill-structured-form 从已确认的项目事实填写一个 Word 或 Excel 表单，并生成待核对副本和填写核对清单。"
+
+policy:
+  allow_implicit_invocation: true

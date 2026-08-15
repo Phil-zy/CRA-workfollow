@@ -1,0 +1,169 @@
+{
+  "schema_version": "1.0",
+  "config_id": "simulated-site-startup-form",
+  "version": 1,
+  "status": "draft",
+  "form_type": "site-startup-form",
+  "created_at": "2026-08-13T13:44:04.788334+00:00",
+  "template": {
+    "file_name": "模拟项目启动信息表.xlsx",
+    "sha256": "7ec18e1278c933c04261926e933b4cab602e21de2596df229db820644052133c",
+    "structure_fingerprint": "17f6be100ec7e7300e566a1e66d070544684488c9ec2f51ff7e3af084641aef1",
+    "format": "xlsx"
+  },
+  "fields": [
+    {
+      "id": "project_name",
+      "label": "项目名称",
+      "fact_key": "方案名称",
+      "target": {
+        "sheet": "申请信息",
+        "cell": "B3",
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "proposed",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B6"
+      }
+    },
+    {
+      "id": "protocol_number",
+      "label": "方案编号",
+      "fact_key": "方案编号",
+      "target": {
+        "sheet": "申请信息",
+        "cell": "B4",
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "proposed",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B4"
+      }
+    },
+    {
+      "id": "protocol_version",
+      "label": "方案版本号",
+      "fact_key": "方案版本号",
+      "target": {
+        "sheet": "申请信息",
+        "cell": "B5",
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "proposed",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B5"
+      }
+    },
+    {
+      "id": "funding_source",
+      "label": "经费来源",
+      "fact_key": "经费来源",
+      "target": {
+        "sheet": "申请信息",
+        "cell": "B6",
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "proposed",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B15"
+      }
+    },
+    {
+      "id": "acceptance_number",
+      "label": "项目受理号",
+      "fact_key": "项目受理号",
+      "target": {
+        "sheet": "申请信息",
+        "cell": "B7",
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "proposed",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B3"
+      }
+    },
+    {
+      "id": "department",
+      "label": "研究科室",
+      "fact_key": "研究科室",
+      "target": {
+        "sheet": "中心信息",
+        "cell": "B3",
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "proposed",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B8"
+      }
+    },
+    {
+      "id": "principal_investigator",
+      "label": "主要研究者",
+      "fact_key": "主要研究者",
+      "target": {
+        "sheet": "中心信息",
+        "cell": "B4",
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "direct",
+        "mode": "cell"
+      },
+      "mapping_review": "proposed",
+      "source_hint": {
+        "source_file": "project-info.xlsx",
+        "source_location": "伦理审查申请表信息!B7"
+      }
+    },
+    {
+      "id": "pi_signature",
+      "label": "主要研究者签名",
+      "fact_key": null,
+      "target": {
+        "sheet": "中心信息",
+        "cell": "B5",
+        "expected_original": ""
+      },
+      "mapping": {
+        "type": "manual"
+      },
+      "mapping_review": "proposed",
+      "source_hint": null
+    }
+  ],
+  "approval": {
+    "approved_by": null,
+    "approved_at": null,
+    "approval_id": null
+  }
+}

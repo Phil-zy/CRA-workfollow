@@ -1,0 +1,62 @@
+{
+  "config_id": "simulated-site-startup-form",
+  "form_type": "site-startup-form",
+  "fields": [
+    {
+      "id": "project_name",
+      "label": "项目名称",
+      "fact_key": "方案名称",
+      "target": {"sheet": "申请信息", "cell": "B3"},
+      "mapping": {"type": "direct", "mode": "cell"}
+    },
+    {
+      "id": "protocol_number",
+      "label": "方案编号",
+      "fact_key": "方案编号",
+      "target": {"sheet": "申请信息", "cell": "B4"},
+      "mapping": {"type": "direct", "mode": "cell"}
+    },
+    {
+      "id": "protocol_version",
+      "label": "方案版本号",
+      "fact_key": "方案版本号",
+      "target": {"sheet": "申请信息", "cell": "B5"},
+      "mapping": {"type": "direct", "mode": "cell"}
+    },
+    {
+      "id": "funding_source",
+      "label": "经费来源",
+      "fact_key": "经费来源",
+      "target": {"sheet": "申请信息", "cell": "B6"},
+      "mapping": {"type": "direct", "mode": "cell"}
+    },
+    {
+      "id": "acceptance_number",
+      "label": "项目受理号",
+      "fact_key": "项目受理号",
+      "target": {"sheet": "申请信息", "cell": "B7"},
+      "mapping": {"type": "direct", "mode": "cell"}
+    },
+    {
+      "id": "department",
+      "label": "研究科室",
+      "fact_key": "研究科室",
+      "target": {"sheet": "中心信息", "cell": "B3"},
+      "mapping": {"type": "direct", "mode": "cell"}
+    },
+    {
+      "id": "principal_investigator",
+      "label": "主要研究者",
+      "fact_key": "主要研究者",
+      "target": {"sheet": "中心信息", "cell": "B4"},
+      "mapping": {"type": "direct", "mode": "cell"}
+    },
+    {
+      "id": "pi_signature",
+      "label": "主要研究者签名",
+      "fact_key": null,
+      "target": {"sheet": "中心信息", "cell": "B5"},
+      "mapping": {"type": "manual"}
+    }
+  ]
+}
