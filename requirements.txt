@@ -1,3 +1,5 @@
+# 仅记录直接依赖；Skill 运行时不得直接安装本文件。
+# 离线安装以 .agents/skills/cra-fill-structured-form/runtime/requirements-lock.txt 为准。
 jsonschema==4.26.0
 openpyxl==3.1.5
 python-docx==1.2.0

@@ -12,6 +12,7 @@ tmp/
 __pycache__/
 .pytest_cache/
 .venv/
+.runtime/
 
 # 操作系统文件
 Thumbs.db

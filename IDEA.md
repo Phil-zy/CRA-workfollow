@@ -44,11 +44,16 @@
 - 已完成：CRA 已人工核对 Excel 待核对表单和填写核对清单并明确确认无误，首版正式业务验收完成
 - 已完成：新增 CRA 人工核对定稿与复验流程，使用不可覆盖的新清单和独立验收 JSON 绑定输入、配置、双输出及逐字段最终决定
 - 已完成：首版交付已提交到本地分支 `codex/cra-structured-form-v1`
-- 当前暂停：2026-08-16 新一轮 `.docx` 填写任务已获目录与数据授权；模板检查仍因捆绑 Python 缺少 `jsonschema==4.26.0` 停止，工作区也无离线 wheels 或项目本地 Python 环境，尚未读取事实表或模板内容，未生成填写结果/核对清单
+- 已完成：查明首版测试实际继承 Windows Store Python 3.13 用户包，而实际 Skill 使用 Codex Python 3.12.13，解释器与依赖来源差异导致 `jsonschema` 启动失败
+- 已完成：为 `cra-fill-structured-form` 增加仓库内离线 wheelhouse、完整依赖哈希锁、项目隔离 venv 引导器、启动前依赖预检和统一 `run.ps1` 入口；运行期不访问包索引、不使用用户全局包或临时 `PYTHONPATH`
+- 已完成：从干净隔离环境实际执行 Word 模板检查、加载 Word/Excel 填写及验证脚本，并完成 Word 端到端链路；环境回归还覆盖外部 `PYTHONPATH` 污染、项目外运行目录、额外 wheel 和陈旧 manifest 拒绝；Word 13 项、Excel 8 项、环境 4 项，共 25 项自动化回归通过
+- 当前状态：Python 运行环境不可复现问题已解决；2026-08-16 的新一轮 `.docx` 业务任务仍未读取事实表或模板内容、未生成填写结果或核对清单，如需继续应重新展示授权摘要并按 Skill 流程执行
 - 下一步：是否推送 GitHub 由后续单独决定；当前不推送
 
 ## 决策记录
 
+- 2026-08-17：固定 `cra-fill-structured-form` 的 Windows x64 / CPython 3.12 本地运行环境。离线 wheel 和 SHA-256 锁文件随仓库保存，`.runtime/cra-fill-structured-form/` 在每个工作区本地重建；所有业务入口与测试统一通过 `run.ps1`。启动前清除外部 Python 路径，并严格检查项目内解释器、10 个锁定依赖、模块来源、manifest、锁文件和 wheelhouse 哈希。任一缺失、不匹配或额外依赖时停止，不读取 CRA 输入、不联网、不绕过 Schema 校验。
+- 2026-08-17：首版测试能够导入 `jsonschema` 的原因已确认：测试通过 `sys.executable` 继承 Windows Store Python 3.13，其用户 `site-packages` 中存在被本机 `mcp` 使用的 `jsonschema==4.26.0`；实际 Codex Python 3.12.13 没有该包。旧 `cpython-313` 测试缓存与包安装路径构成现场证据，原仓库没有解释器记录、venv、wheelhouse 或统一入口。
 - 2026-08-16：实际调用提供的伦理审查申请书为旧版 `.doc`。按 Skill 异常停止规则不读取、不填写；需先生成不覆盖原文件的 `.docx` 副本，并重新完成目录、数据和模板映射审批。
 - 2026-08-16：CRA 已确认目录授权、禁入数据边界及本地转换授权；已生成独立 `.docx` 转换副本，原 `.doc` 未覆盖。模板检查运行环境缺少 `jsonschema==4.26.0`，按“本地运行、不联网、不绕过 Schema 校验”规则停止，等待离线依赖就绪。
 - 2026-08-16：CRA 使用现有 `.docx` 模板重新发起任务并完成本次授权；本地依赖复查确认 `jsonschema` 仍缺失，且工作区没有 `wheels/`、`.venv/` 或 `venv/`，因此继续安全停止。

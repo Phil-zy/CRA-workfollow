@@ -45,7 +45,7 @@ def run_script(name: str, *args: object, expect_success: bool = True) -> subproc
 
 class ExcelTargetTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.temp = tempfile.TemporaryDirectory(dir=ROOT / "temp")
+        self.temp = tempfile.TemporaryDirectory()
         self.workspace = Path(self.temp.name)
         self.target = self.workspace / "site-startup-form.xlsx"
         self.config_library = self.workspace / "template-configs"

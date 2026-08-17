@@ -45,7 +45,7 @@ def run_script(name: str, *args: object, expect_success: bool = True) -> subproc
 
 class WordPrototypeTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.temp = tempfile.TemporaryDirectory(dir=ROOT / "temp")
+        self.temp = tempfile.TemporaryDirectory()
         self.workspace = Path(self.temp.name)
         self.target = self.workspace / "template.docx"
         self.facts = self.workspace / "facts.xlsx"

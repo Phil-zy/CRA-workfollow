@@ -7,6 +7,13 @@ description: Safely fill one CRA structured Word or Excel form from confirmed pr
 
 把本 Skill 作为用户入口。只把 `scripts/` 中的 Python 文件作为内部确定性执行能力；不要要求 CRA 直接运行脚本。
 
+## 固定本地运行环境
+
+- 不得用系统 `python`、用户虚拟环境或临时 `PYTHONPATH` 直接执行 `scripts/`。
+- 每个新工作区或 `.runtime/` 不存在时，先读取 [runtime/README.md](runtime/README.md)，使用 Codex 工作区依赖工具返回的 Python 3.12 执行 `runtime/bootstrap_runtime.py`。引导器只允许从仓库 `runtime/wheelhouse/` 安装带 SHA-256 的锁定依赖，禁止访问包索引。
+- 此后模板检查、配置、填写、核对清单、验证和自动化测试全部通过 `run.ps1` 启动。`run.ps1` 会清除外部 Python 路径，并在业务脚本启动前检查项目内隔离解释器、完整锁定依赖、manifest 与 wheelhouse 哈希；其中直接依赖固定为 `jsonschema==4.26.0`、`openpyxl==3.1.5`、`python-docx==1.2.0`。
+- 环境检查不通过时停止，不读取 CRA 输入、不绕过 Schema 校验，也不改用全局包兜底。
+
 ## 首版边界
 
 - 每次只处理一个 `.docx` 或 `.xlsx` 目标表单。
@@ -36,34 +43,34 @@ description: Safely fill one CRA structured Word or Excel form from confirmed pr
 
 ### 3. 检查模板配置
 
-调用 `scripts/inspect_template.py` 检查保护、宏、外部数据连接和可读性，并计算文件哈希和结构指纹。只允许以下分支：
+通过 `run.ps1 inspect_template.py ...` 调用内部脚本，检查保护、宏、外部数据连接和可读性，并计算文件哈希和结构指纹。只允许以下分支：
 
 - 存在状态为 `enabled` 且结构指纹、文件 SHA-256 均完全匹配的配置：继续读取事实。
-- 没有匹配配置、只有草稿配置或模板结构已变化：调用 `scripts/draft_mapping.py` 生成新草稿，向 CRA 展示所有字段映射，然后停止。Excel 新模板还必须提供逐字段的工作表与单元格位置说明；核心程序不得写死具体 Excel 版式。
+- 没有匹配配置、只有草稿配置或模板结构已变化：通过 `run.ps1 draft_mapping.py ...` 生成新草稿，向 CRA 展示所有字段映射，然后停止。Excel 新模板还必须提供逐字段的工作表与单元格位置说明；核心程序不得写死具体 Excel 版式。
 
 不要在生成映射草稿的同一审批步骤中填写表单。
 
 ### 4. 审批映射
 
-只有 CRA 对草稿中的目标位置、事实键、字段类型、选项规则及人工保留区域作出明确批准后，才调用 `scripts/activate_mapping.py` 生成不可原地修改的已启用版本。不要修改已启用配置；任何变更都生成更高版本的新草稿，旧版本只能停用，不能删除。
+只有 CRA 对草稿中的目标位置、事实键、字段类型、选项规则及人工保留区域作出明确批准后，才通过 `run.ps1 activate_mapping.py ...` 生成不可原地修改的已启用版本。不要修改已启用配置；任何变更都生成更高版本的新草稿，旧版本只能停用，不能删除。
 
 ### 5. 生成待核对输出
 
-按目标格式调用 `scripts/fill_docx.py` 或 `scripts/fill_xlsx.py`，再次验证配置 Schema、审批状态、结构指纹和文件 SHA-256，只读输入并写入新的表单副本，对每个目标字段产生且只产生一种状态，把临时审计 JSON 写入任务临时目录。
+按目标格式通过 `run.ps1 fill_docx.py ...` 或 `run.ps1 fill_xlsx.py ...` 调用内部脚本，再次验证配置 Schema、审批状态、结构指纹和文件 SHA-256，只读输入并写入新的表单副本，对每个目标字段产生且只产生一种状态，把临时审计 JSON 写入任务临时目录。
 
-随后调用 `scripts/build_checklist.py` 生成独立 `.xlsx` 核对清单。不得在正式表单中添加批注、问题标记或审核痕迹。
+随后通过 `run.ps1 build_checklist.py ...` 生成独立 `.xlsx` 核对清单。不得在正式表单中添加批注、问题标记或审核痕迹。
 
 ### 6. 验证并交付
 
-Word 调用 `scripts/validate_outputs.py`；Excel 调用 `scripts/validate_xlsx_outputs.py`。验证输入及配置哈希、目标结构、实际填写、人工保留区域、状态集合、核对清单逐行内容及两个输出的审计关联，再按 [output-validation.md](references/output-validation.md) 完成视觉检查。
+Word 通过 `run.ps1 validate_outputs.py ...` 验证；Excel 通过 `run.ps1 validate_xlsx_outputs.py ...` 验证。验证输入及配置哈希、目标结构、实际填写、人工保留区域、状态集合、核对清单逐行内容及两个输出的审计关联，再按 [output-validation.md](references/output-validation.md) 完成视觉检查。
 
 只有全部检查通过后，才能交付 `原文件名_待核对_YYYYMMDD-HHMMSS.原扩展名` 和 `原文件名_填写核对清单_YYYYMMDD-HHMMSS.xlsx`。明确说明输出仍需 CRA 审核，不是正式记录。
 
 ### 7. 记录 CRA 人工核对结果
 
-CRA 对双输出作出明确核对结论后，调用 `scripts/finalize_review.py` 生成新的 `原文件名_CRA核对记录_YYYYMMDD-HHMMSS.xlsx` 和独立人工核对审计 JSON。不得修改或覆盖原待核对表单、原核对清单或执行审计。
+CRA 对双输出作出明确核对结论后，通过 `run.ps1 finalize_review.py ...` 生成新的 `原文件名_CRA核对记录_YYYYMMDD-HHMMSS.xlsx` 和独立人工核对审计 JSON。不得修改或覆盖原待核对表单、原核对清单或执行审计。
 
-随后调用 `scripts/validate_review_record.py`，重新验证输入、配置、表单输出、原核对清单、已核对清单的路径与 SHA-256，并确认每个字段的 `CRA 最终决定`、核对人、核对时间、核对 ID 和总体结论可追溯。只有验证通过后，才能把业务验收记为完成；签名、发送、提交和正式归档仍由 CRA 执行。
+随后通过 `run.ps1 validate_review_record.py ...` 重新验证输入、配置、表单输出、原核对清单、已核对清单的路径与 SHA-256，并确认每个字段的 `CRA 最终决定`、核对人、核对时间、核对 ID 和总体结论可追溯。只有验证通过后，才能把业务验收记为完成；签名、发送、提交和正式归档仍由 CRA 执行。
 
 ## 异常停止
 
